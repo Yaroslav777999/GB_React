@@ -9,9 +9,9 @@ const name = 'Ivan';
 function App() {
   return (
     <Fragment>
-      < Message/>
       <h2 className={"header"}> Hello Geekbrains </h2>
-      <Button name={name} />
+      <Button name={name}/>
+      <Message name={'Ярослав'}/>
     </Fragment>
 
   )
