@@ -1,4 +1,24 @@
+.bg {
+    min-height: 100vh;
+    margin: 0px 0 0 100px;
+    }
+body {
+    margin: 0;
+    background-image: url(/img/bg.jpg);
+}
+.header {
+    color: darkgreen;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+    justify-content: center;
+
+}
 .ulList {
-    list-style: none;
-    
+    list-style: none
+}
+.liList {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: darkgreen;
+    font-size: 20px;
+    font-style: italic;
 }
