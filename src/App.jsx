@@ -1,69 +1,45 @@
-import React from 'react';
-import { Button } from './components/Button/Button';
-import { Child } from './components/Child/Child';
-// import { ChildFunc } from './components/ChildFunc/ChildFunc';
+import React, { useState } from 'react';
+import { Form } from './components/Form/Form';
+import { MessageList } from './components/Messagelist/MessageList';
+import './index.css';
 
-export class App extends React.Component {
-  state = {
-    count: 1,
-    toggle: true,
-    array: [1, 2, 3],
-    text: '',
-    messageList: [],
+const defaultMessages = [
+  {
+    id: 1,
+    author: "Geekbrains",
+    text: 'Welcome to the chat',
+  },
+];
+
+
+export const App = () => {
+  const [ messages, setMessages ] = useState([defaultMessages]);
+
+
+  const addMessage = (text) => {
+    setMessages([...messages, {
+      id: 2,
+      author: 'User',
+      text
+    }])
+   
   };
 
-  handleCount = () => {
-    this.setState((prevCount) => ({ count: prevCount.count + 1 }));
-  };
+  // handleInputChange = (ev) => {
+  //   this.setState({ text: ev.target.value });
+  // };
 
-  handleToggle = () => {
-    this.setState((prevToggle) => ({ toggle: !prevToggle.toggle }));
-  };
+  // handleInputChangeAutor = (ev) => {
+  //   this.setState({ text: ev.target.value });
+  // };
 
-  handleSubmit = (ev) => {
-    ev.preventDefault();
-    this.setState({
-      messageList: [...this.state.messageList, this.state.text],
-    });
-  };
 
-  handleInputChange = (ev) => {
-    this.setState({ text: ev.target.value });
-  };
-
-  render() {
     return (
       <>
-        <h2>Parent component</h2>
-        <p>{this.state.count}</p>
-        <Button click={this.handleCount} />
-        <button onClick={this.handleToggle}>
-          {this.state.toggle ? 'hide' : 'show'}
-        </button>
-        <hr />
-
-        {this.state.toggle && <Child number={this.state.count} />}
-
-        <hr />
-        <h2>Function component</h2>
-
-        {/* {this.state.toggle && <ChildFunc number={this.state.count} />} */}
-
-        {/* {this.state.array.map((item, idx) => {
-          return <p key={idx}>{item}</p>
-        })} */}
-
-        <form onSubmit={(ev) => this.handleSubmit(ev)}>
-          <input type="text" onChange={(ev) => this.handleInputChange(ev)} />
-          <button type="submit">click</button>
-
-          <ul>
-            {this.state.messageList.map((item, idx) => {
-              return <li key={idx}>{item}</li>;
-            })}
-          </ul>
-        </form>
+             <h1>Welcome to React</h1>
+             <MessageList messages={messages} />
+             <Form addMessage={addMessage}/>
       </>
     );
-  }
-}
+  };
+
